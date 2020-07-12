@@ -1,59 +1,20 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    app: springboot-example
-  name: springboot-example
-  namespace: default
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: springboot-example
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
-  template:
-    metadata:
-      labels:
-        app: springboot-example
-    spec:
-      containers:
-        - image: gcr.io/eternal-trainer-271923/github_jarkinv_springboot-swagger
-          imagePullPolicy: IfNotPresent
-          name: springboot-example-sha256-1
----
-apiVersion: autoscaling/v2beta1
-kind: HorizontalPodAutoscaler
-metadata:
-  labels:
-    app: springboot-example
-  name: springboot-example-hpa-t6z3
-  namespace: default
-spec:
-  maxReplicas: 5
-  metrics:
-    - resource:
-        name: cpu
-        targetAverageUtilization: 80
-      type: Resource
-  minReplicas: 1
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: springboot-example
----
 apiVersion: v1
 kind: Service
 metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"finalizers":["service.kubernetes.io/load-balancer-cleanup"],"labels":{"app":"springboot-example","app.kubernetes.io/managed-by":"gcp-cloud-build-deploy"},"name":"springboot-example-service","namespace":"default","resourceVersion":"849192","selfLink":"/api/v1/namespaces/default/services/springboot-example-service","uid":"38800ee6-d2bc-47f5-ae82-84cb0cb7e854"},"spec":{"clusterIP":"10.59.244.214","externalTrafficPolicy":"Cluster","ports":[{"nodePort":31445,"port":80,"protocol":"TCP","targetPort":8080}],"selector":{"app":"springboot-example"},"sessionAffinity":"None","type":"LoadBalancer"},"status":{"loadBalancer":{"ingress":[{"ip":"34.65.220.6"}]}}}
+  creationTimestamp: "2020-07-09T09:56:58Z"
   finalizers:
     - service.kubernetes.io/load-balancer-cleanup
   labels:
     app: springboot-example
+    app.kubernetes.io/managed-by: gcp-cloud-build-deploy
   name: springboot-example-service
   namespace: default
+  resourceVersion: "2502366"
+  selfLink: /api/v1/namespaces/default/services/springboot-example-service
+  uid: 38800ee6-d2bc-47f5-ae82-84cb0cb7e854
 spec:
   clusterIP: 10.59.244.214
   externalTrafficPolicy: Cluster
@@ -66,3 +27,7 @@ spec:
     app: springboot-example
   sessionAffinity: None
   type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+      - ip: 34.65.220.6
