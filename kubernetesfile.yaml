@@ -7,9 +7,7 @@ metadata:
     app: springboot-example
   name: springboot-example-service
   namespace: default
-  resourceVersion: "849192"
   selfLink: /api/v1/namespaces/default/services/springboot-example-service
-  uid: 38800ee6-d2bc-47f5-ae82-84cb0cb7e854
 spec:
   clusterIP: 10.59.244.214
   externalTrafficPolicy: Cluster
