@@ -16,7 +16,7 @@ steps:
       - run
       - --filename=kubernetesfile.yaml
       - --image=gcr.io/$PROJECT_ID/springboot-example:latest
-      - --location=europe-west1-b
+      - --location=europe-west6-a
       - --cluster=cluster-1
 images:
   - 'gcr.io/$PROJECT_ID/springboot-example'
