@@ -3,7 +3,7 @@ steps:
     args:
       - build
       - '-t'
-      - '$_IMAGE_NAME:$COMMIT_SHA'
+      - '$_IMAGE_NAME'
       - .
       - '-f'
       - $_DOCKERFILE_NAME
