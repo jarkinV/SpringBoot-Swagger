@@ -13,7 +13,7 @@ steps:
   # deploy container image to GKE
   - name: "gcr.io/cloud-builders/gke-deploy"
     args:
-      - apply
+      - run
       - --filename=kubernetesfile.yaml
       - --image=gcr.io/$PROJECT_ID/springboot-example:latest
       - --location=europe-west6-a
