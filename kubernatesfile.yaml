@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  finalizers:
+    - service.kubernetes.io/load-balancer-cleanup
+  labels:
+    app: springboot-example
+  name: springboot-example-service
+  namespace: default
+  resourceVersion: "849192"
+  selfLink: /api/v1/namespaces/default/services/springboot-example-service
+  uid: 38800ee6-d2bc-47f5-ae82-84cb0cb7e854
+spec:
+  clusterIP: 10.59.244.214
+  externalTrafficPolicy: Cluster
+  ports:
+    - nodePort: 31445
+      port: 80
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: springboot-example
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+      - ip: 34.65.220.6
