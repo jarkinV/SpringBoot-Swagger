@@ -29,6 +29,6 @@ options:
   substitutionOption: ALLOW_LOOSE
 substitutions:
   _K8S_YAML_PATH: kubernetesfile.yaml
-  _IMAGE_NAME: gcr.io/${PROJECT_ID}/springboot-example
+  _IMAGE_NAME: gcr.io/eternal-trainer-271923/springboot-example
   _GKE_LOCATION: europe-west6-a
   _GKE_CLUSTER: cluster-1
