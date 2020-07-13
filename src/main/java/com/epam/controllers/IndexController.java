@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class IndexController {
     @RequestMapping(method = RequestMethod.GET)
     String index() {
-        return "Just Test 2";
+        return "Just Test 3";
     }
 }
